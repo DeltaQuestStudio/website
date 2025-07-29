@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-inter: "Inter", sans-serif;
+  --font-orbitron: "Orbitron", monospace;
+  --primary-teal: #00d4aa;
+  --primary-dark: #1a1a2e;
+  --secondary-dark: #16213e;
+  --accent-light: #0f3460;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    cursor: none !important; /* Hide default cursor */
+  }
+  body {
+    @apply bg-slate-900 text-white;
+    cursor: none !important;
+  }
+
+  /* Override cursor for interactive elements */
+  button,
+  a,
+  input,
+  textarea,
+  [role="button"],
+  .cursor-pointer {
+    cursor: none !important;
+  }
+}
+
+@layer components {
+  .text-gradient {
+    @apply bg-gradient-to-r from-teal-400 via-cyan-400 to-teal-300 bg-clip-text text-transparent;
+  }
+
+  .text-gradient-alt {
+    @apply bg-gradient-to-r from-white via-gray-100 to-teal-100 bg-clip-text text-transparent;
+  }
+
+  .glow-effect {
+    filter: drop-shadow(0 0 20px rgba(0, 212, 170, 0.4));
+  }
+
+  .glow-effect-strong {
+    filter: drop-shadow(0 0 30px rgba(0, 212, 170, 0.6));
+  }
+
+  .floating-animation {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .sparkle-animation {
+    animation: sparkle 2s ease-in-out infinite;
+  }
+
+  .bg-primary-dark {
+    background-color: var(--primary-dark);
+  }
+
+  .bg-secondary-dark {
+    background-color: var(--secondary-dark);
+  }
+
+  .bg-accent-light {
+    background-color: var(--accent-light);
+  }
+
+  /* Cursor interaction hints */
+  .cursor-glow-hint {
+    transition: all 0.3s ease;
+  }
+
+  .cursor-glow-hint:hover {
+    transform: translateY(-2px);
+    filter: drop-shadow(0 0 15px rgba(0, 212, 170, 0.3));
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes sparkle {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes bounce-gentle {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.bounce-gentle {
+  animation: bounce-gentle 2s ease-in-out infinite;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--primary-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary-teal);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #00b894;
+}
+
+/* Disable cursor glow on mobile */
+@media (hover: none) and (pointer: coarse) {
+  * {
+    cursor: auto !important;
+  }
+
+  body {
+    cursor: auto !important;
+  }
+}
